@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUZAIFA KHAN - Professional Crypto Trader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #0a0e17;
+            --secondary: #131a2c;
+            --accent: #3498db;
+            --accent-dark: #1d6fa5;
+            --accent-gradient: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            --text: #f8f9fa;
+            --text-secondary: #a0aec0;
+            --card-bg: rgba(19, 26, 44, 0.8);
+            --glass-bg: rgba(10, 14, 23, 0.8);
+            --border-glow: rgba(52, 152, 219, 0.5);
+            --verified: #3498db;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(10, 14, 23, 0.95);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-glow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .logo-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233498db" fill-opacity="0.1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,224C960,224,1056,256,1152,245.3C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat, linear-gradient(to bottom, var(--primary), var(--secondary));
+            background-size: 100% 150px, cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(52, 152, 219, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(46, 204, 113, 0.1) 0%, transparent 40%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--accent-gradient) border-box;
+            box-shadow: 0 0 30px rgba(52, 152, 219, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--verified);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.7);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.6);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            margin-bottom: 70px;
+            color: var(--text);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: var(--accent-gradient);
+            border-radius: 3px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 25px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-glow);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233498db" fill-opacity="0.05" d="M0,128L48,138.7C96,149,192,171,288,186.7C384,203,480,213,576,192C672,171,768,117,864,117.3C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom no-repeat;
+            background-size: 100% 200px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: var(--accent-gradient);
+            transition: height 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--border-glow);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial.active {
+            display: block;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .testimonial-text::before {
+            top: -20px;
+            left: -15px;
+        }
+
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -15px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .testimonial-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 20%, rgba(52, 152, 219, 0.1) 0%, transparent 30%),
+                        radial-gradient(circle at 30% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 30%);
+        }
+
+        .cta-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-description {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .whatsapp-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--text);
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-link:hover {
+            background: var(--accent-gradient);
+            color: white;
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            margin-top: 20px;
+        }
+
+        /* Crypto ticker */
+        .crypto-ticker {
+            background: var(--accent-gradient);
+            padding: 18px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 40s linear infinite;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding-left: 100%;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.2rem;
+            }
+
+            .profile-image {
+                width: 170px;
+                height: 170px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span class="logo-icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="logo-text">HUZAIFA KHAN</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Join VIP</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-container">
+                    <img src="https://fak-h.jokerkeep057.workers.dev/abkkX" alt="HUZAIFA KHAN" class="profile-image">
+                    <div class="verified-badge">
+                        <i class="fas fa-check"></i>
+                    </div>
+                </div>
+                <h1>HUZAIFA KHAN</h1>
+                <p class="hero-tagline">Professional Crypto Trader & Market Analyst</p>
+                <p>Providing premium cryptocurrency trading signals and market analysis to maximize your investment returns.</p>
+                <a href="https://whatsapp.com/channel/0029VbAtdFcJuyA66uAkUz0R" class="cta-button">
+                    <i class="fab fa-whatsapp"></i> Join VIP Channel
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crypto Ticker -->
+    <div class="crypto-ticker">
+        <div class="ticker-content">
+            BTC: $61,432.10 (+2.3%) &nbsp; | &nbsp; ETH: $3,405.55 (+1.7%) &nbsp; | &nbsp; BNB: $586.32 (-0.4%) &nbsp; | &nbsp; XRP: $0.542 (+3.1%) &nbsp; | &nbsp; ADA: $0.458 (+0.8%) &nbsp; | &nbsp; SOL: $142.67 (+5.2%) &nbsp; | &nbsp; DOT: $7.23 (+1.5%) &nbsp; | &nbsp; DOGE: $0.134 (-0.2%) &nbsp; | &nbsp; 
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Huzaifa Khan, a professional cryptocurrency trader with over 7 years of experience in the dynamic crypto markets. My journey began during the early days of Bitcoin, and I've since developed a proven strategy for identifying profitable trading opportunities.</p>
+                    <p>I specialize in technical analysis, market sentiment evaluation, and risk management to consistently generate profits in both bull and bear markets. My VIP Signal Channel provides exclusive access to my trading insights and real-time signals.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2.4K+</div>
+                            <div class="stat-label">VIP Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">VIP Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="service-title">Premium Signals</h3>
+                    <p class="service-description">Receive precise buy/sell signals with entry, take-profit, and stop-loss levels for maximum profitability and risk management.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Market Analysis</h3>
+                    <p class="service-description">Get daily market analysis reports with insights on market trends, potential opportunities, and risk factors to watch.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="service-title">Private Community</h3>
+                    <p class="service-description">Join an exclusive community of serious traders where we share ideas, strategies, and support each other's growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonials-container">
+                <div class="testimonial active">
+                    <p class="testimonial-text">I've been following Huzaifa's signals for 6 months now and my portfolio has increased by 185%. His analysis is always spot on and the risk management advice is invaluable.</p>
+                    <p class="testimonial-author">Ahmed R.</p>
+                    <p class="testimonial-role">Dubai</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The quality of signals in Huzaifa's VIP channel is exceptional. I appreciate the detailed explanations that come with each signal, which have helped me become a better trader myself.</p>
+                    <p class="testimonial-author">Sarah T.</p>
+                    <p class="testimonial-role">UK</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">As someone new to crypto trading, Huzaifa's guidance has been priceless. The community is supportive, and the signals have consistently been profitable. Highly recommended!</p>
+                    <p class="testimonial-author">Michael L.</p>
+                    <p class="testimonial-role">Canada</p>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Join My VIP Crypto Signal Channel</h2>
+            <p class="cta-description">Get exclusive access to premium cryptocurrency trading signals, market analysis, and a supportive community of successful traders.</p>
+            <a href="https://whatsapp.com/channel/0029VbAtdFcJuyA66uAkUz0R" class="whatsapp-cta">
+                <i class="fab fa-whatsapp"></i> Join on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="footer-text">&copy; 2023 HUZAIFA KHAN | Professional Crypto Trader. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Testimonial carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let currentIndex = 0;
+            
+            function showTestimonial(index) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonials[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            function nextTestimonial() {
+                let nextIndex = (currentIndex + 1) % testimonials.length;
+                showTestimonial(nextIndex);
+            }
+            
+            // Add click events to dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    let index = parseInt(this.getAttribute('data-index'));
+                    showTestimonial(index);
+                });
+            });
+            
+            // Auto-rotate testimonials every 5 seconds
+            setInterval(nextTestimonial, 5000);
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
